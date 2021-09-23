@@ -3,7 +3,7 @@
   width: 95%;
   max-width: 25rem;
   border-radius: 6px;
-  background-color: #38015c;
+  background-color: #f5db00;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   padding: 1rem;
   text-align: center;
@@ -11,7 +11,7 @@
 
 .auth h1 {
   text-align: center;
-  color: white;
+  color: #141414;
 }
 
 .control {
@@ -20,7 +20,7 @@
 
 .control label {
   display: block;
-  color: white;
+  color: #141414;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
@@ -30,7 +30,7 @@
   background-color: #f1e1fc;
   color: #38015c;
   border-radius: 4px;
-  border: 1px solid white;
+  border: 1px solid #141414;
   width: 100%;
   text-align: left;
   padding: 0.25rem;
@@ -46,16 +46,16 @@
 .actions button {
   cursor: pointer;
   font: inherit;
-  color: white;
-  background-color: #9f5ccc;
-  border: 1px solid #9f5ccc;
+  color: #141414;
+  background-color: #9e9f9c;
+  border: 1px solid #9e9f9c;
   border-radius: 4px;
   padding: 0.5rem 2.5rem;
 }
 
 .actions button:hover {
-  background-color: #873abb;
-  border-color: #873abb;
+  background-color: #c291e2;
+  border-color: #c291e2;
 }
 
 .actions .toggle {

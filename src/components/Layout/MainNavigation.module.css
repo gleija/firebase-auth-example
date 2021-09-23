@@ -1,7 +1,7 @@
 .header {
   width: 100%;
   height: 5rem;
-  background-color: #38015c;
+  background-color: #f5db00;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
@@ -9,10 +9,10 @@
   padding: 0 10%;
 }
 
-.logo {
+.title {
   font-family: 'Lato', sans-serif;
   font-size: 2rem;
-  color: white;
+  color: #141414;
   margin: 0;
 }
 
@@ -30,15 +30,15 @@
 
 .header a {
   text-decoration: none;
-  color: white;
+  color: #141414;
   font-weight: bold;
 }
 
 .header button {
   font: inherit;
   background-color: transparent;
-  border: 1px solid white;
-  color: white;
+  border: 1px solid #141414;
+  color: #141414;
   font-weight: bold;
   padding: 0.5rem 1.5rem;
   border-radius: 6px;
