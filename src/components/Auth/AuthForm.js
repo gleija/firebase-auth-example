@@ -21,7 +21,7 @@ const AuthForm = () => {
     } else {
       // Please add your own firebase API public key below
       fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBbd96S32LNTWO_mLo67vB_2fWomfxe0sI",
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]",
         {
           method: "POST",
           body: JSON.stringify({
