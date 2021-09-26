@@ -4,6 +4,8 @@ import classes from "./AuthForm.module.css";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
@@ -20,6 +22,7 @@ const AuthForm = () => {
     if (isLogin) {
     } else {
       // Please add your own firebase API public key below
+      setIsLoading(true);
       fetch(
         "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]",
         {
@@ -34,12 +37,14 @@ const AuthForm = () => {
           },
         }
       ).then((res) => {
+        setIsLoading(false);
         if (res.ok) {
           console.log(res);
         } else {
           res.json().then((data) => {
-            // show some sort of error
-            console.log(data);
+            if (data && data.error && data.error.message) {
+              setErrorMessage(data.error.message);
+            }
           });
         }
       });
@@ -64,7 +69,11 @@ const AuthForm = () => {
           />
         </div>
         <div className={classes.actions}>
-          <button>{isLogin ? "Login" : "Create Account"}</button>
+          {isLoading ? (
+            <p>Loading ... </p>
+          ) : (
+            <button>{isLogin ? "Login" : "Create Account"}</button>
+          )}
           <button
             type="button"
             className={classes.toggle}
@@ -73,6 +82,7 @@ const AuthForm = () => {
             {isLogin ? "Create new account" : "Login with existing account"}
           </button>
         </div>
+        {errorMessage && <p>{errorMessage}</p>}
       </form>
     </section>
   );
