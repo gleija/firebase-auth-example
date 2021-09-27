@@ -51,6 +51,7 @@ const AuthForm = () => {
           res.json().then((data) => {
             if (data && data.error && data.error.message) {
               setErrorMessage(data.error.message);
+              throw new Error(data.error.message);
             }
           });
         }
@@ -58,6 +59,9 @@ const AuthForm = () => {
       .then((data) => {
         console.log(data);
         authContext.login(data.idToken);
+      })
+      .catch((err) => {
+        console.log("error");
       });
   };
 
