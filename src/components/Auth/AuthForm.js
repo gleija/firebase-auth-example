@@ -16,30 +16,35 @@ const AuthForm = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    setErrorMessage(null);
+    setIsLoading(true);
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
-    // optional Add Validation
+    let url;
     if (isLogin) {
+      // Please add your own firebase API public key below
+      url =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBbd96S32LNTWO_mLo67vB_2fWomfxe0sI";
     } else {
       // Please add your own firebase API public key below
-      setIsLoading(true);
-      fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            email: enteredEmail,
-            password: enteredPassword,
-            returnSecureToken: true,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      ).then((res) => {
+      url =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBbd96S32LNTWO_mLo67vB_2fWomfxe0sI";
+    }
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        email: enteredEmail,
+        password: enteredPassword,
+        returnSecureToken: true,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
         setIsLoading(false);
         if (res.ok) {
-          console.log(res);
+          return res.json();
         } else {
           res.json().then((data) => {
             if (data && data.error && data.error.message) {
@@ -47,8 +52,10 @@ const AuthForm = () => {
             }
           });
         }
+      })
+      .then((data) => {
+        console.log(data);
       });
-    }
   };
 
   return (
