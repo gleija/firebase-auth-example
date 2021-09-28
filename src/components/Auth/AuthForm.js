@@ -50,21 +50,20 @@ const AuthForm = () => {
         if (res.ok) {
           return res.json();
         } else {
-          res.json().then((data) => {
+          return res.json().then((data) => {
             if (data && data.error && data.error.message) {
               setErrorMessage(data.error.message);
-              throw new Error(data.error.message);
             }
+            throw new Error(errorMessage);
           });
         }
       })
       .then((data) => {
-        console.log(data);
         authContext.login(data.idToken);
         history.replace("/");
       })
       .catch((err) => {
-        console.log("error");
+        console.log(err);
       });
   };
 
