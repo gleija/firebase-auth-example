@@ -1,3 +1,6 @@
+<div align="center" >
+  <img src="social.png" alt="firebase" title="firebase" width="300px" />
+</div>
 # Firebase auth example
 
 This small projects is a quick reference to firebase authentication API and its basic functionality.
